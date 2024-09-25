@@ -1,0 +1,12 @@
+
+ID=1
+Name=kishan
+City=rajkot
+
+ID=2
+Name=parth
+City=surat
+
+ID=3
+Name=yash
+City=rjt
