@@ -1,6 +1,6 @@
 # Q12. Write a Python program to convert a list of characters into a string.
 
-list=['p','a','n','k','a','j']
+list=['k','i','s','h','a','n']
 
 Name=""
 
