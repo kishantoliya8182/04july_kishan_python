@@ -1,6 +1,6 @@
 # Q23. Write a Python program to find the length of a tuple. 
 
-test=('Tops',25,78,12.5,'Rajkot')
+test=('kishan',"toliya",78,12.5,'Rajkot')
 
 print(test,"\n")
 

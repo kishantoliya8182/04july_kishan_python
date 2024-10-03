@@ -4,8 +4,8 @@ list=[]
 ch=int(input('Enter number of data: '))
 
 for i in range(ch):
-    car=input('Enter Your Car Name: ')
-    list.append(car)
+    name=input('Enter Your  Name: ')
+    list.append(name)
 
 tuple_list=tuple(list)
 

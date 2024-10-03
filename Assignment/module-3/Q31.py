@@ -2,7 +2,7 @@
 
 tuple_1=(101,102,103,104,105)
 
-tuple_2=('Vivan','Rahul','Hardik','Shivam','Nishan')
+tuple_2=('kishan','jay','parth','zala','yagnik')
 
 total=len(tuple_1)
 

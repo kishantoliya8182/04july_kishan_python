@@ -1,6 +1,6 @@
 # Q30. Write a Python program to convert a list of tuples into a dictionary.
 
-tuple_list=[('Id',101),('Name','Pankaj'),('City','Rajkot')]
+tuple_list=[('Id',101),('Name','kishan'),('City','Rajkot')]
 
 dict_list=dict(tuple_list)
 

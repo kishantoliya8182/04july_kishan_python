@@ -1,6 +1,6 @@
 # Q21. Write a Python program to convert a tuple to a string. 
 
-test=('p','a','n','k','a','j')
+test=('k','i','s','h','a','n')
 
 name=''
 

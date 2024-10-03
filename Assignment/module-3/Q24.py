@@ -5,12 +5,12 @@ test=[]
 ch=int(input("Enter number of data: "))
 
 for i in range(ch):
-    city=input("Enter Your City Name: ")
-    test.append(city)
+    name=input("Enter Your  Name: ")
+    test.append(name)
 
 tuple=tuple(test)
 
-print(f'The List is: {test}\n') # Return Origional list
+print(f'The List is: {test}\n') 
 
-print(f'After convert List into tuple: {tuple}') # Return Tuple 
+print(f'After convert List into tuple: {tuple}')
 

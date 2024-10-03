@@ -1,6 +1,6 @@
 # Q28. Write a Python program to remove an empty tuple(s) from a list of tuples. 
 
-tuple_list=[(12,25,4,3),('Tops','is','hello','wow'),(12.3,4,58,6,97,8),()]
+tuple_list=[(1,2,4,3),('kishan','toliya','rajkot','guj'),(10.3,4,5,6,7,8),()]
 
 print(f'Origional List of Tuple: {tuple_list}\n')
 for i in tuple_list:

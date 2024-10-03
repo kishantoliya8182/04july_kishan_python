@@ -1,6 +1,6 @@
 # Q34. Write a Python script to concatenate following dictionaries to create a new one. 
 
-dict_1={'Id':101, 'Name':'Pankaj', 'City':'Rajkot'}
+dict_1={'Id':101, 'Name':'kishan', 'City':'Rajkot'}
 dict_2={'sub':'Paython','center':'Tops'}
 
 dict_1.update(dict_2)

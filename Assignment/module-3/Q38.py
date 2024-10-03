@@ -1,6 +1,6 @@
 # Q38. Write a Python program to check multiple keys exists in a dictionary
 
-dict_1={'Id':101, 'Name':'Pankaj', 'City':'Rajkot'}
+dict_1={'Id':101, 'Name':'kishan', 'City':'Rajkot'}
 
 dict_key=[]
 
