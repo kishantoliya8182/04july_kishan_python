@@ -279,6 +279,7 @@ li:hover .arrow-icona {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top:70px;
 }
 .slider {
   position: relative;
@@ -286,7 +287,7 @@ li:hover .arrow-icona {
   max-width: 600px;
   margin: 20px auto;
   overflow: hidden;
-  border-radius: 1rem;
+  border-radius: 2rem;
 }
 .slides {
   display: flex;
@@ -309,7 +310,8 @@ li:hover .arrow-icona {
   transform: translateY(-50%);
 }
 .slider-nav button {
-  background: rgba(0, 0, 0, 0.5);
+  background: #805ad5;
+  opacity:50%;
   border: none;
   color: white;
   padding: 10px;
@@ -322,7 +324,7 @@ li:hover .arrow-icona {
   margin-top: 20px;
 }
 .card {
-  background: white;
+  background:#F2F6FF ;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 16px;
   text-align: center;
@@ -342,7 +344,7 @@ li:hover .arrow-icona {
   background: #C8E6C9;
   color: #388E3C;
   border-radius: 12px;
-  padding: 2px 8px;
+  padding: 2px 10px;
   font-size: 12px;
   margin-bottom: 10px;
 }
@@ -380,6 +382,86 @@ li:hover .arrow-icona {
   color: #7E57C2;
   font-weight: 500;
 }
+
+/* sign in popup css*/
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(144, 0, 255,0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+.popup {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 101;
+}
+.popup h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.popup p {
+  color: #4a5568;
+  margin-bottom: 1rem;
+}
+.popup .input-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+.popup .input-group input {
+  flex: 1;
+  border: none;
+  outline: none;
+}
+.popup button {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+.popup .btn-primary {
+  background: #6b46c1;
+  color: white;
+}
+.popup .btn-secondary {
+  background: #48bb78;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popup .btn-secondary i {
+  margin-right: 0.5rem;
+}
+.popup .btn-google {
+  border: 1px solid #e2e8f0;
+  color: #4a5568;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popup .btn-google i {
+  margin-right: 0.5rem;
+}
+
+
+
 @media (min-width: 1024px) {
   .main-content {
       flex-direction: row;
@@ -738,7 +820,7 @@ nav input{
           <button class="custom-btn">  <i class="fas fa-phone-alt"></i>Talk to Expert</button>
         </li>
         <li>
-          <button class="custom-btn"> <i class="fas fa-user"></i> My Account</button>
+          <button id="signInBtn" class="custom-btn"> <i class="fas fa-user"></i> My Account</button>
         </li>
         
 
@@ -749,6 +831,30 @@ nav input{
   </nav>
  <!--end navbar-->
 
+ <!--signin popup start-->
+ <div class="overlay" id="overlay">
+  <div class="popup">
+      <h2>Sign-in to PolicyClub</h2>
+      <p>For a more personalised experience, sign in with your registered email</p>
+      <form method="post">
+         {% csrf_token %}
+      <div class="input-group">
+          <input type="email" placeholder="Email">
+      </div>
+      <button class="btn-primary">Sign in with Email</button>
+    </form>
+      <div class="text-center" style="color: #4a5568; margin-bottom: 1rem;text-align:center;">or</div>
+      <button class="btn-secondary">
+          <i class="fab fa-whatsapp"></i> Sign in with WhatsApp
+      </button>
+      <button class="btn-google">
+          <i class="fab fa-google"></i> Sign in with Google
+      </button>
+  </div>
+</div>  
+
+ <!--signin popup end-->
+
  <!--start firstpage-->
  <div class="container">
   <div class="main-content">
@@ -757,25 +863,25 @@ nav input{
           <h2>the Best Insurance</h2>
           <div class="info">
               <div>
-                  <i class="fas fa-filter" style="color: #9C27B0;"></i>
-                  <span style="color: #9C27B0;">50 insurers offering lowest prices</span>
+                  <i ><img src="static/search.png" width="80" hight="10"   /></i>
+                  <span style="color: #9C27B0;">50 insurers offering <br> lowest prices</span>
               </div>
               <div>
-                  <i class="fas fa-bolt" style="color: #FF9800;"></i>
-                  <span style="color: #FF9800;">Quick, easy & hassle free</span>
+                  <i ><img src="static/electricity.png" width="80" hight="10"   /></i>
+                  <span style="color: #FF9800;">Quick, easy & <br>hassle free</span>
               </div>
           </div>
       </div>
       <div class="slider">
           <div class="slides">
               <div class="slide">
-                  <img src="https://storage.googleapis.com/a1aa/image/ReUgw0zbWHSleklzJxdOFP1hWi0TdhfKFofTxqQ9mhAfVFpfE.jpg" alt="Slide 1">
+                  <img src="static/firstpageslider3.jpg" alt="Slide 1">
               </div>
               <div class="slide">
-                  <img src="https://storage.googleapis.com/a1aa/image/JChqvY2TDC6GHp39lQAgIZZpHt59eZI0nXNl1ufo0NDuqI9TA.jpg" alt="Slide 2">
+                  <img src="static/kapilsilder1.jpg" alt="Slide 2">
               </div>
               <div class="slide">
-                  <img src="https://storage.googleapis.com/a1aa/image/V4DlCKwORc50MRY34V0fkZqvd22v2Cy30EqVlhlePwSxqI9TA.jpg" alt="Slide 3">
+                  <img src="static/firstpageslider2.jpg" alt="Slide 3">
               </div>
           </div>
           <div class="slider-nav">
@@ -787,61 +893,61 @@ nav input{
   <div class="grid">
       <div class="card">
           <div class="badge">Upto 10% Discount</div>
-          <img src="https://storage.googleapis.com/a1aa/image/OTP3h9kbbgL7N9K8Yfzt4IKWV0R5z6VelAqSXpWMjPIgnI9TA.jpg" alt="Term Life Insurance">
+          <img src="/static/allproducts/insurance.png" alt="Term Life Insurance">
           <p>Term Life Insurance</p>
       </div>
       <div class="card">
           <div class="badge">FREE Home Visit</div>
-          <img src="https://storage.googleapis.com/a1aa/image/y23Cbn8RcDZfEqWW6qgFO5KCU8pjTTAicqZcErBZrHpuTkeTA.jpg" alt="Health Insurance">
+          <img src="/static/allproducts/heartbeat.png" alt="Health Insurance">
           <p>Health Insurance</p>
       </div>
       <div class="card">
           <div class="badge">In-Built Life Cover</div>
-          <img src="https://storage.googleapis.com/a1aa/image/Lfgzj3tifZvjY06eTKjtFM2cgV83UPBcehGARxdtKBXTeEpfE.jpg" alt="Investment Plans">
+          <img src="/static/allproducts/investment.png" alt="Investment Plans">
           <p>Investment Plans</p>
       </div>
       <div class="card">
           <div class="badge">Upto 85% Discount</div>
-          <img src="https://storage.googleapis.com/a1aa/image/U7cifFjrFL0KcaDb8nwLIdDCGSPFGqefMqHGvtCixbieeEpfE.jpg" alt="Car Insurance">
+          <img src="/static/allproducts/insurance (1).png" alt="Car Insurance">
           <p>Car Insurance</p>
       </div>
       <div class="card">
           <div class="badge">Upto 20% Cheaper</div>
-          <img src="https://storage.googleapis.com/a1aa/image/OUhE9vt6wRpEPZ3mp4hbke8aoKTDsGGo2iqKWn9jciAvTkeTA.jpg" alt="Term Insurance (Women)">
+          <img src="/static/allproducts/superwoman.png" alt="Term Insurance (Women)">
           <p>Term Insurance (Women)</p>
       </div>
       <div class="card">
-          <img src="https://storage.googleapis.com/a1aa/image/hOeqPeitVwm86kJFqLHzG6bTgKyXOIHM9aRDEocOBktbnI9TA.jpg" alt="Term Plans with Return of Premium">
+          <img src="/static/allproducts/salary.png" alt="Term Plans with Return of Premium">
           <p>Term Plans with Return of Premium</p>
       </div>
       <div class="card">
-          <img src="https://storage.googleapis.com/a1aa/image/K9Ta4pC9V7ZQEhAnk3HVR6mwl35gsGtRODg9mbU0wUq4JSfJA.jpg" alt="Guaranteed Return Plans">
+          <img src="/static/allproducts/payment.png" alt="Guaranteed Return Plans">
           <p>Guaranteed Return Plans</p>
       </div>
       <div class="card">
           <div class="badge" style="background: #FFCDD2; color: #D32F2F;">Premium Waiver</div>
-          <img src="https://storage.googleapis.com/a1aa/image/9B1515XgMgrSEJVBHafvcd7aVxLmrx2KDSOiezNPag6pnI9TA.jpg" alt="Child Savings Plans">
+          <img src="/static/allproducts/pyramid.png" alt="Child Savings Plans">
           <p>Child Savings Plans</p>
       </div>
       <div class="card">
-          <img src="https://storage.googleapis.com/a1aa/image/4VbHHKh8jvJdC9pWrOfLA0gKLE4KAiYNgXOOGca7Oml1TkeTA.jpg" alt="2 Wheeler Insurance">
+          <img src="/static/allproducts/bike-rental.png" alt="2 Wheeler Insurance">
           <p>2 Wheeler Insurance</p>
       </div>
       <div class="card">
           <div class="badge">Upto 25% Discount</div>
-          <img src="https://storage.googleapis.com/a1aa/image/CLoZ7ypv0DI8GN07bBmrQJc1OPs0RCc5eV0U8L6jbXP2TkeTA.jpg" alt="Family Health Insurance">
+          <img src="/static/allproducts/family.png" alt="Family Health Insurance">
           <p>Family Health Insurance</p>
       </div>
       <div class="card">
-          <img src="https://storage.googleapis.com/a1aa/image/OYvboPGLYrYjK5OS371OPzFzVTOrBeNrhfJo7UwfKV6LPR6nA.jpg" alt="Travel Insurance">
+          <img src="/static/allproducts/travel.png" alt="Travel Insurance">
           <p>Travel Insurance</p>
       </div>
       <div class="card">
           <div class="badge">Upto 25% Discount</div>
-          <img src="https://storage.googleapis.com/a1aa/image/eTwfvyV0GBlWzkLbDQGsY4s8Dluadec0yBbSNYP5sey7eEpfE.jpg" alt="Home Insurance">
+          <img src="/static/allproducts/property-insurance.png" alt="Home Insurance">
           <p>Home Insurance</p>
       </div>
-      <div class="card">
+      {% comment %} <div class="card">
           <img src="https://storage.googleapis.com/a1aa/image/EJfAcQM13t2jMyAXOW5X2VpXpX4XuJC9gcjXN0Diwdp4TkeTA.jpg" alt="Retirement Plans">
           <p>Retirement Plans</p>
       </div>
@@ -849,7 +955,7 @@ nav input{
           <div class="badge">Upto 65% Discount</div>
           <img src="https://storage.googleapis.com/a1aa/image/YUhC44jQQxrGCh6SkBaRNKQ9SbSda6YOInLc4A0zKY95JSfJA.jpg" alt="Employee Group Health Insurance">
           <p>Employee Group Health Insurance</p>
-      </div>
+      </div> {% endcomment %}
   </div>
   <div class="view-all">
       <button>View all products</button>
@@ -869,39 +975,39 @@ nav input{
               <p>Life Insurance for Housewives</p>
           </div>
           <div class="card">
-              <p>Health Insurance</p>
+              <p style="color:rgb(249, 121, 82);">Health Insurance</p>
               <p>Day 1 Coverage</p>
           </div>
           <div class="card">
-              <p>Health Insurance</p>
+              <p style="color:rgb(249, 121, 82);">Health Insurance</p>
               <p>1 Cr Health Insurance</p>
           </div>
           <div class="card">
-              <p>Health Insurance</p>
+              <p style="color:rgb(249, 121, 82);">Health Insurance</p>
               <p>Personal Accident</p>
           </div>
           <div class="card">
-              <p>Motor Insurance</p>
+              <p style="color:rgb(82, 249, 246);">Motor Insurance</p>
               <p>Commercial Vehicles</p>
           </div>
           <div class="card">
-              <p>Business Insurance</p>
+              <p style="color:rgb(82, 249, 246);">Business Insurance</p>
               <p>Marine Insurance</p>
           </div>
           <div class="card">
-              <p>Business Insurance</p>
+              <p style="color:rgb(82, 249, 246);">Business Insurance</p>
               <p>Professional Indemnity for Doctors</p>
           </div>
           <div class="card">
-              <p>Business Insurance</p>
+              <p style="color:rgb(82, 249, 246);">Business Insurance</p>
               <p>Directors & Officers Liability</p>
           </div>
           <div class="card">
-              <p>Business Insurance</p>
+              <p style="color:rgb(82, 249, 246);">Business Insurance</p>
               <p>Workmen Compensation</p>
           </div>
           <div class="card">
-              <p>Others</p>
+              <p style="color:rgb(82, 249, 246);">Others</p>
               <p>Pet Insurance</p>
           </div>
       </div>
@@ -994,6 +1100,18 @@ nav input{
             index = (index < slide.length - 1) ? index + 1 : 0;
             showSlide(index);
         }, 3000);
+
+        {% comment %} sign in popup code {% endcomment %}
+
+        document.getElementById('signInBtn').addEventListener('click', function() {
+          document.getElementById('overlay').style.display = 'flex';
+      });
+
+      document.getElementById('overlay').addEventListener('click', function(event) {
+          if (event.target === this) {
+              this.style.display = 'none';
+          }
+      });
 
 </script>
 
