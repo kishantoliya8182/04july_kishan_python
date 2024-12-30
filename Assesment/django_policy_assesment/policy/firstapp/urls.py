@@ -5,4 +5,5 @@ from firstapp import views
 
 urlpatterns = [
     path('',views.home),
+    path('myaacount/',views.myaccount),
 ]

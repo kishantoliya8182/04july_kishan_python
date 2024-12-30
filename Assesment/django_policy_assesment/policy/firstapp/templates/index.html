@@ -853,10 +853,15 @@ nav input{
         {% comment %} <li>
           <button id="signup-btn" class="custom-btn"> <i class="fas fa-user">My Account</i></button>
         </li> {% endcomment %}
+        {%if user%}
         <li>
-          <button id="signup-btn" class="custom-btn"> <i class="fas fa-user"></i> My Account</button>
+          <a href="/myaacount"><button  class="custom-btn"> <i class="fas fa-user"></i>My Account</button></a>
         </li> 
-  
+        {% else %}  
+        <li>
+          <button id="signup-btn" class="custom-btn"> <i class="fas fa-user"></i> Login </button>
+        </li> 
+        {% endif %}
       </ul>
       <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
     </div>

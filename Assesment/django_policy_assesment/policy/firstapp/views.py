@@ -9,6 +9,8 @@ from django.core.mail import EmailMultiAlternatives
 def home(request):
     global otp
     global snewreq
+    global mail
+    user=request.session.get('user')
     if request.method == 'POST':
         if request.POST.get('signup')=='signup':
             snewreq=signForm(request.POST)
@@ -65,11 +67,12 @@ def home(request):
         elif request.POST.get('btnotp')=='btnotp':
             if request.POST['votp'] == str(otp):
                 snewreq.save()
+                request.session['user']=mail
                 print("register sucessfully")
-                return render(request, 'index.html')
+                return render(request, 'index.html',{'user':user})
             else:   
                 print("not store")
-                return render(request, 'index.html')
+                return render(request, 'index.html',{'user':user})
             
     # if request.method == 'POST':
     #     req=otpForm(request.POST)
@@ -81,7 +84,11 @@ def home(request):
     #             return render(request,'otpverify.html')
     #     else:
     #         print("otp not valid")
-    return render(request,'index.html')
+    return render(request,'index.html',{'user':user})
+
+
+def myaccount(request):
+    return render(request,'myaccount.html')
 
 
                 

@@ -1,0 +1,629 @@
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Profile Page</title>
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+            <style>
+                body {
+                    background-color: #e0e7ff;
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                .container {
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 0 20px;
+                }
+
+                header {
+                    background-color: #fff;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                    padding: 10px 0;
+                }
+
+                header .container {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                
+
+                header button {
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    font-size: 16px;
+                    color: #4a4a4a;
+                }
+
+                header button i {
+                    margin-left: 5px;
+                }
+
+                .main-content {
+                    display: flex;
+                    padding: 20px 0;
+                    gap: 20px;
+                    animation: fadeIn 0.8s ease-in-out;
+                }
+            
+                aside {
+                    width: 20%;
+                    background-color: #f9f9f9;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    padding: 20px;
+                    border-radius: 12px;
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                }
+            
+                aside:hover {
+                    transform: scale(1.02);
+                    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+                }
+            
+                aside nav {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                }
+            
+                .nav-link {
+                    display: flex;
+                    align-items: center;
+                    padding: 12px;
+                    border-radius: 8px;
+                    text-decoration: none;
+                    color: #4a4a4a;
+                    font-size: 16px;
+                    font-weight: 500;
+                    background-color: #fff;
+                    transition: background-color 0.3s ease, color 0.3s ease;
+                }
+            
+                .nav-link:hover {
+                    background-color: #ecebff;
+                    color: #6a0dad;
+                }
+            
+                .nav-link.active {
+                    background-color: #6a0dad;
+                    color: #fff;
+                }
+            
+                .icon-container {
+                    margin-right: 10px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            
+                main {
+                    width: 75%;
+                    background-color: #fff;
+                    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+
+                    padding: 20px;
+                    border-radius: 12px;
+                    animation: fadeIn 0.8s ease-in-out;
+                }
+            
+                @keyframes fadeIn {
+                    from {
+                        opacity: 0;
+                        transform: translateY(20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+            
+
+
+                .profile-header {
+                    background-color: #fff;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                    padding: 20px;
+                    border-radius: 8px;
+                    margin-bottom: 20px;
+                    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+
+                }
+
+                .profile-header h1 {
+                    font-size: 24px;
+                    color: #1e3a8a;
+                }
+
+                .profile-header p {
+                    color: #6b7280;
+                }
+
+                .profile-header .tabs {
+                    display: flex;
+                    margin-top: 10px;
+                }
+
+                .profile-header .tabs button {
+                    background: none;
+                    border: none;
+                    padding: 10px 20px;
+                    cursor: pointer;
+                    transition: background-color 0.3s;
+                }
+
+                .profile-header .tabs button:hover {
+                    background-color: #e0e7ff;
+                }
+
+                .profile-header .tabs button.active {
+                    background-color: #e0e7ff;
+                    color: #1e3a8a;
+                }
+
+                .card {
+                    background-color: #fff;
+                    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+
+                    padding: 20px;
+                    border-radius: 8px;
+                    margin-bottom: 20px;
+                    animation: fadeIn 0.5s ease-in-out;
+                }
+
+                .card h2 {
+                    font-size: 20px;
+                    color: #4a4a4a;
+                    margin-bottom: 10px;
+                }
+
+                .card form {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 20px;
+                }
+
+                .card form label {
+                    color: #4a4a4a;
+                    margin-bottom: 5px;
+                    display: block;
+                }
+
+                .card form input,
+                .card form select {
+                    width: 100%;
+                    padding: 10px;
+                    border: 1px solid #d1d5db;
+                    border-radius: 4px;
+                    transition: border-color 0.3s;
+                }
+
+                .card form input:focus,
+                .card form select:focus {
+                    border-color: #6a0dad;
+                }
+
+                .card form .radio-group {
+                    display: flex;
+                    align-items: center;
+                }
+
+                .card form .radio-group input {
+                    margin-right: 5px;
+                }
+
+                .card form .radio-group label {
+                    margin-right: 20px;
+                }
+
+                .card form button {
+                    grid-column: span 2;
+                    background-color: #6a0dad;
+                    color: #fff;
+                    padding: 10px;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    transition: background-color 0.3s;
+                }
+
+                .card form button:hover {
+                    background-color: #5a00c1;
+                }
+
+                .contact-card {
+                    background-color: #fff;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                    padding: 20px;
+                    border-radius: 8px;
+                    margin-bottom: 20px;
+                    animation: fadeIn 0.5s ease-in-out;
+                }
+
+                .contact-card h2 {
+                    font-size: 20px;
+                    color: #4a4a4a;
+                    margin-bottom: 10px;
+                }
+
+                .contact-card .contact-item {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 10px 0;
+                    border-bottom: 1px solid #d1d5db;
+                }
+
+                .contact-card .contact-item:last-child {
+                    border-bottom: none;
+                }
+
+                .contact-card .contact-item .info {
+                    display: flex;
+                    align-items: center;
+                }
+
+                .contact-card .contact-item .info img {
+                    height: 20px;
+                    width: 20px;
+                    margin-right: 10px;
+                }
+
+                .contact-card .contact-item .info span {
+                    margin-right: 10px;
+                }
+
+                .contact-card .contact-item .info .tag {
+                    background-color: #e0e7ff;
+                    color: #4a4a4a;
+                    padding: 5px 10px;
+                    border-radius: 4px;
+                }
+
+                .contact-card .contact-item button {
+                    background: none;
+                    border: none;
+                    color: #1e3a8a;
+                    cursor: pointer;
+                    transition: color 0.3s;
+                }
+
+                .contact-card .contact-item button:hover {
+                    color: #6a0dad;
+                }
+
+                .contact-card .add-button {
+                    background-color: #6a0dad;
+                    color: #fff;
+                    padding: 10px;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    transition: background-color 0.3s;
+                    width: 100%;
+                    text-align: center;
+                    margin-top: 20px;
+                }
+
+                .contact-card .add-button:hover {
+                    background-color: #5a00c1;
+                }
+
+                @keyframes fadeIn {
+                    from {
+                        opacity: 0;
+                        transform: translateY(20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    .main-content {
+                        flex-direction: column;
+                    }
+
+                    aside {
+                        width: 100%;
+                        margin-bottom: 20px;
+                    }
+
+                    main {
+                        width: 100%;
+                        padding-left: 0;
+                    }
+
+                    .card form {
+                        grid-template-columns: 1fr;
+                    }
+
+                    .card form button {
+                        grid-column: span 1;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    header .container {
+                        flex-direction: column;
+                        align-items: flex-start;
+                    }
+
+                    header img {
+                        margin-bottom: 10px;
+                    }
+
+                    .profile-header h1 {
+                        font-size: 20px;
+                    }
+
+                    .profile-header p {
+                        font-size: 14px;
+                    }
+
+                    .profile-header .tabs button {
+                        padding: 5px 10px;
+                        font-size: 14px;
+                    }
+
+                    .card h2 {
+                        font-size: 18px;
+                    }
+
+                    .card form label {
+                        font-size: 14px;
+                    }
+
+                    .card form input,
+                    .card form select {
+                        padding: 8px;
+                    }
+
+                    .card form button {
+                        padding: 8px;
+                        font-size: 14px;
+                    }
+
+                    .contact-card h2 {
+                        font-size: 18px;
+                    }
+
+                    .contact-card .contact-item .info span {
+                        font-size: 14px;
+                    }
+
+                    .contact-card .contact-item .info .tag {
+                        padding: 3px 8px;
+                        font-size: 12px;
+                    }
+
+                    .contact-card .add-button {
+                        padding: 8px;
+                        font-size: 14px;
+                    }
+                }
+
+                .gender-selection {
+                    display: flex;
+                    align-items: center;
+                    margin: 2rem auto;
+                    justify-content: center;
+                }
+                .gender-selection .option {
+                    display: flex;
+                    align-items: center;
+                    margin-right: 1rem;
+                    padding: 0.5rem;
+                    border: 2px solid;
+                    border-radius: 0.25rem;
+                    width: 8rem;
+                    justify-content: center;
+                    cursor: pointer;
+                    transition: transform 0.3s ease-in-out, border-color 0.3s, color 0.3s;
+                }
+                .gender-selection .option:hover {
+                    transform: scale(1.05);
+                }
+                {% comment %} .gender-selection .option.male {
+                    border-color: #805ad5;
+                    color: #805ad5;
+                }
+                .gender-selection .option.female {
+                    border-color: #e2e8f0;
+                    color: #a0aec0;
+                } {% endcomment %}
+                .gender-selection .option.active {
+                    border-color: #4a5568;
+                    background-color: #805ad5;
+                    color: #fff;
+                }
+                .gender-selection .option i {
+                    margin-right: 0.5rem;
+                }
+                .gender-selection .option i.check {
+                    margin-left: 0.5rem;
+                }
+            </style>
+        </head>
+        <body>
+            <header>
+                <div class="container">
+                    <img src="/static/PolicyClub-removebg (1) (1).png" width="220" height="70" alt="Policy Bazaar Logo">
+                    <button>
+                        <span>Account</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+            </header>
+            <div class="container main-content">
+                <aside>
+                    <nav>
+                        <a href="#" class="nav-link">
+                            <i class="icon-container">
+                                <img src="/static/myaccount/dashboard.png" alt="Dashboard Icon" height='30' width='30'/>
+                            </i>
+                            Dashboard
+                        </a>
+                        <a href="#" class="nav-link">
+                            <i class="icon-container">
+                                <img src="/static/myaccount/fiscal-policy.png" alt="Fiscal Policy Icon" height='30' width='30'/>
+                            </i>
+                            Your Policies
+                        </a>
+                        <a href="#" class="nav-link">
+                            <i class="icon-container">
+                                <img src="/static/myaccount/claim-approval.png" alt="Claims Icon" height='30' width='30'/>
+                            </i>
+                            Claims
+                        </a>
+                        <a href="#" class="nav-link">
+                            <i class="icon-container">
+                                <img src="/static/myaccount/help (1).png" alt="Help Icon" height='30' width='30'/>
+                            </i>
+                            Get Help
+                        </a>
+                        <a href="#" class="nav-link active">
+                            <i class="icon-container">
+                                <img src="/static/myaccount/user.png" alt="Profile Icon" height='30' width='30'/>
+                            </i>
+                            Profile
+                        </a>
+                    </nav>
+                </aside>
+                <main>
+                    <div class="profile-header">
+                        <h1>Profile</h1>
+                        <p>Manage your family members, contact details and financial assets</p>
+                        <div class="tabs">
+                            <button class="active">Personal details</button>
+                            <button>Family details</button>
+                            <button>Assets</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                    <h2>Personal details</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="gender-selection">
+                            <div class="option male">
+                            <i class="fas fa-male">
+                            </i>
+                            <span>
+                            Male
+                            </span>
+                        
+                            
+                            </div>
+                            <div class="option female">
+                            <i class="fas fa-female">
+                            </i>
+                            <span>
+                            Female
+                            </span>
+                            </div>
+                        </div>
+                        <input type="text" id="genderInput" name="gender" placeholder="Selected Gender" hidden>
+
+                        <div>
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" placeholder="Enter Your FullName" name="fname">
+                        </div>
+                        <div>
+                            <label for="mobileNumber">Mobile Number</label>
+                            <input type="text" id="mobileNumber" name="mnum" placeholder="Enter Your mobileNumber">
+                        </div>
+                        <div>
+                            <label for="email">Email ID</label>
+                            <input type="email" id="email" name="mail" placeholder="Enter Your Email">
+                        </div>
+                        <div>
+                            <label for="dob">Date of Birth (DD/MM/YYYY)</label>
+                            <input type="date" id="dob" name="dob" placeholder="DD/MM/YYYY" />
+                        </div>
+                        <div>
+                            <label for="annualIncome">Annual Income</label>
+                            <select id="annualIncome">
+                                <option>less than 1lac</option>
+                                <option>Upto 3 lakhs</option>
+                                <option>3-5 lakhs</option>
+                                <option>5-7 lakhs</option>
+                                <option>7-10 lakhs</option>
+                                <option>10-15 lakhs</option>
+                                <option>15 lakhs +</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="maritalStatus">Marital Status</label>
+                            <select id="maritalStatus">
+                                <option>Single</option>
+                                <option>Married</option>
+                                <option>Divorced</option>
+                                <option>Widow(er)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="city" placeholder="Enter Your CityName">
+                        </div>
+                        <button type="submit">Save details</button>
+                    </form>
+                </div>
+            </div>
+                    <div class="contact-card">
+                        <h2>Contact details</h2>
+                        <div class="contact-item">
+                            <div class="info">
+                                <img src="https://storage.googleapis.com/a1aa/image/u9m337Ch8CqaMZu888wEHMbqk5dmPAsaEaDzfuUVBhpxnfenA.jpg" alt="Country Flag">
+                                <span>9327095039</span>
+                                <span class="tag">main</span>
+                            </div>
+                            <button><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                        <button class="add-button">Add mobile number</button>
+                    </div>  
+                </main>
+            </div>
+
+            <script>
+                // Variable to store selected value
+            let selectedValue = null;
+
+            // Get DOM elements
+            const maleOption = document.querySelector('.gender-selection .male');
+            const femaleOption = document.querySelector('.gender-selection .female');
+            const genderInput = document.getElementById('genderInput');
+
+            // Function to toggle active state and update value
+            const toggleGender = (selectedOption, value) => {
+                // Remove active class from both
+                maleOption.classList.remove('active');
+                femaleOption.classList.remove('active');
+
+                // Add active class to the selected option
+                selectedOption.classList.add('active');
+
+                // Update the selected value
+                selectedValue = value;
+
+                // Update the input field's value   0
+
+                genderInput.value = selectedValue || "";
+            };
+
+            // Add click event listeners
+            maleOption.addEventListener('click', () => toggleGender(maleOption, 'Male'));
+            femaleOption.addEventListener('click', () => toggleGender(femaleOption, 'Female'));
+
+            // Set default value to null
+            toggleGender({ classList: { remove: () => {} } }, null);
+        </script>
+            </script>
+        </body>
+        </html>
